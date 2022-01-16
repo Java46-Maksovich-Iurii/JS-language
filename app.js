@@ -1,53 +1,37 @@
-// console.log("hello world");
+// const str1 = "abc";
+// const str2 = "abc";
+// console.log(`str1 == str2 is ${str1 == str2}`);
+// console.log(`str1 < "s" is ${str1 < "ab"}`);
+// console.log(`"123" > 23 is ${"123" > 23}`);
+// console.log(`"abc" > 23 is ${"abc" > 23}`);
+// console.log(`"abc" < 23 is ${"abc" < 23}`);
 
-// for (var i = 0; i < 3; i++) {
-//     setTimeout(function() {
-//         console.log(i);
-//     })
+// function stringProcessing(str) {
+//     const strP = "" + str;
+//     console.log(`${str}[4] is ${str[4]}`);
+//     console.log(`${str} length is ${str.length}`);
+//     console.log(`${str} includes "abc" is ${strP.includes("abc")}`)
+//     console.log(`substring of ${str} beginning from index 2 to index 5 is ${strP.substring(2, 5)}`);
+//     console.log(`index of "ll" in the ${str} is ${strP.indexOf("ll")}; last index of "ll" in the ${str} is ${strP.lastIndexOf("ll")} `)
+
 // }
 
-// for (let i = 0; i < 3; i++) {
-//     setTimeout(function() {
-//         console.log(i);
-//     })
-// }
+// stringProcessing("hello world abcll");
 
-console.log('a'+ `${"a"-"a"}` + 'as');
-
-
-function calculator(x,y,z) {
-    let res = 0;
-    switch (z) {
-        case '+':
-            res = x + y;
-            break;
-        case '-':
-            res = x - y;
-            break; 
-        case '*':
-            res = x * y;
-            break;
-        case '/':
-            if (y === 0) { 
-                console.log('ERROR : not correct value')
-                break;
-            }
-            res = x / y;
-            break;  
-            
-        default:
-            return console.log('Enter correct numbers');    
-    }
-    console.log(res);
-    return;
+function encode(num, base) {
+    // base from 2 to 10
+    let res = "";
+    do {
+        const digit = Math.trunc(num % base);
+        const symb = getSymbol(digit);
+        res = symb + res;
+        num = Math.trunc(num / base);
+    } while(num >= 1);
+    return res;
 }
 
-calculator(6,3,'/');
-
-function fun(x) {
-    return function(y,z) {
-        return (x+y)/z;
-    }
+function getSymbol(digit) {
+    return ""+digit;
 }
-let res1 = fun(5)(10,3)
-console.log(res1);
+
+console.log(encode(10, 2));

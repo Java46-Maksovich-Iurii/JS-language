@@ -2,11 +2,14 @@
 function encode(num, Codingstring) {
     let res = "";
 
-    if(charDoubleCheck(Codingstring) == true) {
-        console.log("Coding string has double digits");
+    if (Codingstring.length <= 1 ) {
+        console.log("Codingstring value is not correct.")
         return;
     }
-    else {
+    if(charDoubleCheck(Codingstring) == true) {
+        console.log("Coding string has double digits.");
+        return;
+    } else {
         do {
             const digit = Math.trunc(num % (Codingstring.length));
             const symb = getSymbol(digit, Codingstring);
@@ -35,4 +38,4 @@ for(i=0; i < str.length; i++)
 } 
 
 
-console.log(encode(4, "abcde"));
+console.log(encode(5, ".-"));

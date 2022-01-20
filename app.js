@@ -1,71 +1,36 @@
-// const ar = [2, 100, 9, 80];
-// // ar.sort(function(a, b){
-// //     return a - b;
-// // });
+const ar = [-10, 50, -12, 80, 40];
+let str = '';
 
-// // ar.sort((a,b) => a-b);
-// // console.log(`ar is ${ar.toString()}`);   // comparator
+// ar.forEach(function(element, index){
+//    if (index != ar.length-1) {
+//       str += element + "#";
+//    } else str += element;
+// })
+// console.log(str);
 
-// ar[ar.length] = 200;
-// console.log(ar);
-// ar.push(300, 25);
-// console.log(ar);
+// str = str.substring(0, str.length-1);
+// console.log(str);
 
-// const ar1 = [-8, 30, -57];
-// // ar.push(ar1);
-// ar.push(...ar1);    // spread operator / push - to the end
-// console.log(ar);
+// const lastSharpIndex = str.lastIndexOf('#');
 
-// const ar2 = [27, 35];
-// ar.unshift(...ar2); //unshift to the beginning
-// console.log(ar);
+// const str1 = str.substring(0, lastSharpIndex);
+// console.log(str1);
 
-// // splice - insert or replace
-// //first arg - index for insert/replacing
-// //second arg - amount of the deleted elements (if 0 only insert)
-// //third arg - what we insert (elements)
-// ar.splice(2, 0, 1, 2);
-// console.log(ar);
+// const str2 = str.substring(lastSharpIndex+1);
+// console.log(str2);
 
-// let el = ar.pop(); // delete and return last element
-// el = ar.shift(); // delete and return first element
-// ar.splice(3, 5);
-// console.log(ar);
+// str = str1 +str2;
 
-// const matrix1 = [[1,2,3], [4,5,6], [7,8,9], [10,11,12]];  //4 row / 3 column
-// const matrix2 = [[100,20], [50,-5], [34,28]];
-// const matrix3 = [[1,2], [3,4], [5,6]];
-// function displayMatrix(matrix) {
-//    for (let i = 0; i < matrix[i].length; i++) {
-//        let row  = "";
-//      for (let j = 0; j < matrix.length; j++){
-//         row = row + matrix[j][i] + " ";
-//      }
-//      console.log(row);
-//    }
-//    return;
-// }
-// displayMatrix(matrix3);
-// //displayMatrix(matrix2);
+// const ar1 = ar.slice(1);
+// str += ar[0];
+// ar1.forEach(n => str += '#' + n);
 
+// ar.forEach(function(element, index){
+//    console.log (element +' is ' + (index+1) + ' from ' + ar.length + " elements");
+// })
 
+const ar2 = ar.map(element => element*2);
+console.log(ar2);
 
-const arHw = [13, 28, 4, 15, 25, -10, 40, 17, 27];
-arHw.sort(function(a, b) {
-   if (a%2 == 0 && b%2 == 0) {
-      if (a>b) {
-         return 1;
-      } else return -1;  
-   } 
-   if (a%2==0 && b%2==1) {
-      return -1;
-   }
-   if (a%2==1 && b%2==1) {
-      if (a<b) {
-         return 1;
-      } else return -1;
-   }
-});
-    console.log(arHw);
-
-
+const ar3 = ar.map(element => `<li>${element}</li>`);
+console.log(ar3);

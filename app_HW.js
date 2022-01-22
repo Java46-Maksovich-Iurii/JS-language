@@ -1,36 +1,24 @@
 
-// #1 - sort array
+const arr = [10,20,30,40,50,60,70,80,90];
+let str = '';
 
-const arHw = [13, 28, 4, 15, 25, -10, 40, 17, 27];
-arHw.sort(function(a, b) {
-   if (a%2 == 0 && b%2 == 0) {
-      if (a>b) {
-         return 1;
-      } else return -1;  
-   } 
-   if (a%2==0 && b%2==1) {
-      return -1;
+function myForEach(array, callback) {
+   for (let i = 0; i<array.length; i++) {
+      callback(array[i], i, array);
    }
-   if (a%2==1 && b%2==1) {
-      if (a<b) {
-         return 1;
-      } else return -1;
-   }
-});
-    console.log(arHw);
-
- // #2 - matrixTransp
-
-
-const matrix1 = [[1,2], [3,4], [5,6]];
-function displayMatrix(matrix) {
-   for (let i = 0; i < matrix[i].length; i++) {
-       let row  = "";
-     for (let j = 0; j < matrix.length; j++){
-        row = row + matrix[j][i] + " ";
-     }
-     console.log(row);
-   }
-   return;
 }
-displayMatrix(matrix1);
+
+myForEach(arr, n => str += '# ' + n );
+console.log(str);
+
+function myMap(array, callback) {
+   const ar = [];
+   for (let i = 0; i<array.length; i++) {
+     ar[i] = callback(array[i], i, array);
+   }
+   return ar;
+}
+
+const arr1 = myMap(arr, n => n*=2);
+console.log(arr1);
+

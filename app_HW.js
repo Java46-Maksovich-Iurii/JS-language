@@ -13,9 +13,10 @@ console.log(str);
 
 function myMap(array, callback) {
    const ar = [];
-   for (let i = 0; i<array.length; i++) {
-     ar[i] = callback(array[i], i, array);
-   }
+   // for (let i = 0; i<array.length; i++) {
+   //   ar[i] = callback(array[i], i, array);
+   // }
+   myForEach(array, (item, index, array) => ar.push(callback(item, index, array)));
    return ar;
 }
 

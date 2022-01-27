@@ -1,47 +1,42 @@
-// const ar = [-10, 50, -12, 80, 40];
-// let str = '';
+const person1 = {
+    id: 123,
+    name: 'Moshe',
+    address: {
+        city: 'Lod',
+        street: 'Sokolov'
+    }
+}
+const person2 = {
+    id: 123,
+    name: 'Moshe',
+    address: {
+        city: 'Lod',
+        street: 'Sokolov'
+    }
+}
+console.log(person1 == person2);    //false
+const person3 = person1;
+console.log(person1 == person3);    //true
+console.log(person1 === person3);   //true
+console.log(`JSON.stringify(person1) === JSON.stringify(person1) is ${JSON.stringify(person1) === JSON.stringify(person2)}`);
+console.log(JSON.stringify(person1));
+console.log(person1.toString());
+console.log(person1.name);
+console.log(person1.address.city);
+Object.keys(person1).forEach(k => console.log(k)); //array of object keys
+Object.values(person1).forEach(v => console.log(v)); //array of object values
+Object.entries(person1).forEach(e => console.log(e)); // array of arrays - [key, value]
 
-// ar.forEach(function(element, index){
-//    if (index != ar.length-1) {
-//       str += element + "#";
-//    } else str += element;
-// })
-// console.log(str);
+function createAddress(city, street) {
+    // return {city: city, street: street};
+    return {city, street};
+}
+function createPerson(id, name, adress) {
+    return {id, name, address};
+}
 
-// str = str.substring(0, str.length-1);
-// console.log(str);
-
-// const lastSharpIndex = str.lastIndexOf('#');
-
-// const str1 = str.substring(0, lastSharpIndex);
-// console.log(str1);
-
-// const str2 = str.substring(lastSharpIndex+1);
-// console.log(str2);
-
-// str = str1 +str2;
-
-// const ar1 = ar.slice(1);
-// str += ar[0];
-// ar1.forEach(n => str += '#' + n);
-
-// ar.forEach(function(element, index){
-//    console.log (element +' is ' + (index+1) + ' from ' + ar.length + " elements");
-// })
-
-// const ar2 = ar.map(element => element*2);
-// console.log(ar2);
-
-// const ar3 = ar.map(element => `<li>${element}</li>`);
-// console.log(ar3);
-
-
-const ar20 = [13,17,20,55,23,2,40];
-const arEvenOdd = ar20.filter((n, i, a) => a.length % 2 == 0 ? n % 2 == 0 : n % 2 == 1);
-// console.log(arEvenOdd);
-
-const test = ar20.reduce((res, cur) => res + cur, 0);
-// console.log(test);
-
-const max = ar20.reduce((max, cur) => cur > max ? cur : max, ar20[0]);
-console.log(max);
+const persons = [
+    createPerson(234, "Vasya", createAddress("Rehovot", "Parshani")),
+    createPerson(345, "Olya", createAddress("Rehovot", "Prof. Plaut")),
+    createPerson(456, "Tolya", createAddress("Tel-Aviv", "Disengoff")),
+];

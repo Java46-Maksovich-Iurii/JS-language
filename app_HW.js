@@ -22,7 +22,10 @@ displayOccurrences2(arrayString);
 //********** TASK №2 */
 
 function countBy(array, callbackFunc) {
-   const res = array.reduce((result, element) => {result[callbackFunc(element)] = result[callbackFunc(element)] === undefined ? 1 : result[callbackFunc(element)] + 1; return result}, {});
+   const res = array.reduce((result, element) => {
+      const value = 
+      result[callbackFunc(element)] = result[callbackFunc(element)] === undefined ? 1 : result[callbackFunc(element)] + 1;
+       return result}, {});
    return res;
 }
 

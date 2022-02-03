@@ -1,82 +1,39 @@
-// const person1 = {
-//     id: 123,
-//     name: 'Moshe',
-//     address: {
-//         city: 'Lod',
-//         street: 'Sokolov'
-//     }
-// }
-// const person2 = {
-//     id: 123,
-//     name: 'Moshe',
-//     address: {
-//         city: 'Lod',
-//         street: 'Sokolov'
-//     }
-// }
-// console.log(person1 == person2);    //false
-// const person3 = person1;
-// console.log(person1 == person3);    //true
-// console.log(person1 === person3);   //true
-// console.log(`JSON.stringify(person1) === JSON.stringify(person1) is ${JSON.stringify(person1) === JSON.stringify(person2)}`);
-// console.log(JSON.stringify(person1));
-// console.log(person1.toString());
-// console.log(person1.name);
-// console.log(person1.address.city);
-// Object.keys(person1).forEach(k => console.log(k)); //array of object keys
-// Object.values(person1).forEach(v => console.log(v)); //array of object values
-// Object.entries(person1).forEach(e => console.log(e)); // array of arrays - [key, value]
+const circle = {radius: 20, square: function() {
+    return 3.14 * (this.radius ** 2);
+}, perimeter: () => 2 * 3.14 * this.radius, toString: function() {
+    return `radius of this circle is ${this.radius}`}};       // NaN у стрелки нет "this", не видит радиус
+console.log(`square = ${circle.square()}, perimeter = ${circle.perimeter()}`);
 
-// function createAddress(city, street) {
-//     // return {city: city, street: street};
-//     return {city, street};
-// }
-// function createPerson(id, name, adress) {
-//     return {id, name, address};
-// }
+console.log(`circle: ${circle}`);
 
-// const persons = [
-//     createPerson(234, "Vasya", createAddress("Rehovot", "Parshani")),
-//     createPerson(345, "Olya", createAddress("Rehovot", "Prof. Plaut")),
-//     createPerson(456, "Tolya", createAddress("Tel-Aviv", "Disengoff")),
-// ];
+const circle1 = {radius: 20, perimeter: function() {return 2 * 3.14 * this.radius}, toString: function() {
+    return `radius of this circle is ${this.radius}`}};
+
+// circle1.square();  error, there is no method square for circle1
+
+function Circle(radius) {
+    this.radius = radius;
+}
+Circle.prototype.square = function() {
+   return 3.14 * (this.radius ** 2);
+}
+Circle.prototype.perimeter = function() {
+    return 2 * 3.14 * this.radius;
+}
+Circle.prototype.toString = function() {
+    return `radius of this circle is ${this.radius}`
+}
+const circle10 = new Circle(10);
+
+console.log(`circle10: ${circle10}`);
 
 
-const arrayString = ["bc", "lmn", "d", "d", "lmn", "a", "lmn", "a"];
 
-function displayOccurrences(array) {
-    const res = {};
-    for (let i = 0; i < array.length; i++) {
-        if (res[array[i]] === undefined) {
-            res[array[i]] = 1;
-        } else {
-            res[array[i]] =  res[array[i]] + 1;
-        }
-    }
-    // console.log(res);
-    Object.entries(res).sort((e1, e2) => {
-        const res = e2[1] - e1[1];
-        return res === 0 ? e1[0].localeCompare(e2[0]) : res;
-    }).forEach(e => console.log(`${e[0]} -> ${e[1]}`));
-
+Array.prototype.filter = function(callbackPredicate) {
+    const res = [];
+    this.forEach((n, i, a) => !callbackPredicate(n, i, a) && res.push(n));
+    return res;
 }
 
-// displayOccurrences(arrayString);
-
-
-function displayOccurrences2(array) {
-    const res = createObj(array);
-
-    Object.entries(res).sort((e1, e2) => {
-        const res = e2[1] - e1[1];
-        return res === 0 ? e1[0].localeCompare(e2[0]) : res;
-    }).forEach(e => console.log(`${e[0]} -> ${e[1]}`));    
-
-}
-
-function createObj (array) {
-    return array.reduce((result, element) => { result[element] = result[element] === undefined ? 1 : result[element] + 1; return result}, {});
-}
-
-
-displayOccurrences2(arrayString);
+const ar = [1,2,3,4,100];
+ar.filter(n => n % 2 === 0).forEach(n =>  console.log(n));

@@ -59,7 +59,7 @@ console.log(child.toString());
 class wageEmployee extends Employee {
     #wage
     #hours
-    constructor(id, name, salary, hours, wage){
+    constructor(id, name, salary, hours, wage) {
       super(id, name, salary);
       this.#hours = hours;
       this.#wage = wage; 
@@ -69,6 +69,18 @@ class wageEmployee extends Employee {
     }
 }
 
-const person4 = new wageEmployee (111, 'Assaf', 1000, 10 , 100);
+var person4 = new wageEmployee (111, 'Assaf', 1000, 10 , 100);
 console.log(`person4 is ${person4}`);
 
+function testOutput(fun, expected) {
+    console.log (`function ${fun.name}; expected result: ${expected}; actual result ${fun()}`)
+}
+
+testOutput(person4.computeSalary.bind(person4), 2000);
+testOutput(person4.computeSalary(), 2000);
+
+// function computeSalaryBudget2(persons) {
+//     const allEmployees = persons.filter(el => !!el.computeSalary);
+//     const salaryValues = allEmployees.map(el => el.computeSalary());
+//     return salaryValues.reduce((res, cur) => res+cur);
+// }

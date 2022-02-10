@@ -69,19 +69,35 @@ function countOfPersonType(persons, type) {
    return resArray = persons.filter(el => el.constructor.name === type ).length
 }
 
-const countPT = countOfPersonType(persons, 'Child');
-console.log(countPT)
+// const countPT = countOfPersonType(persons, 'Child');
+// console.log(countPT)
+
+// function computeSalaryBudget(persons) {
+//    return persons.reduce((res, cur) => res += cur.computeSalary ? cur.computeSalary() : 0 , 0);
+// }
+
+// const computeSB = computeSalaryBudget(persons);
+// console.log(computeSB);
+
+// function countChildrenKindergarten(persons, kinderGartenName) {
+//    return persons.filter(el => el.getKinderGarten && el.getKinderGarten() === kinderGartenName ).length
+// }
+
+// const countCK = countChildrenKindergarten(persons, 'Shalom');
+// console.log(countCK);
+
+const person4 = new wageEmployee (111, 'Assaf', 1000, 10 , 100);
+console.log(`person4 is ${person4}`);
+
+function testOutput(fun, expected) {
+    console.log (`function ${fun.name}; expected result: ${expected}; actual result ${fun()}`)
+}
 
 function computeSalaryBudget(persons) {
-   return persons.reduce((res, cur) => res += cur.computeSalary ? cur.computeSalary() : 0 , 0);
+    const allEmployees = persons.filter(el => !!el.computeSalary);
+    const salaryValues = allEmployees.map(el => el.computeSalary());
+    return salaryValues.reduce((res, cur) => res+cur);
 }
 
-const computeSB = computeSalaryBudget(persons);
-console.log(computeSB);
-
-function countChildrenKindergarten(persons, kinderGartenName) {
-   return persons.filter(el => el.getKinderGarten && el.getKinderGarten() === kinderGartenName ).length
-}
-
-const countCK = countChildrenKindergarten(persons, 'Shalom');
-console.log(countCK);
+testOutput(computeSalaryBudget.bind(undefined, persons), 3000);
+testOutput(countOfPersonType.bind(undefined, persons, 'Child'), 3);

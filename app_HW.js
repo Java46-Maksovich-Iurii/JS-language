@@ -12,11 +12,10 @@ console.log(getRandomNumber(1000, 100));
 /* TASK 2 */
 
 function concatinate(prefix) {
-    return function (postfix) {
-        return prefix + postfix;
-    }
+    return (postfix => prefix + postfix)
 }
 
 const concatApp = concatinate('App - ');
 const concatMessage = concatApp('Test status: Done');
 console.log(concatMessage);
+
